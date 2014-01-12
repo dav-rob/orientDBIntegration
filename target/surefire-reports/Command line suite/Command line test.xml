@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite hostname="Davids-MacBook-Pro.local" name="com.entendior.screener.AnyTest" tests="6" failures="0" timestamp="8 Nov 2013 02:27:21 GMT" time="2.453" errors="0">
+  <testcase name="testStringFormat" time="0.014" classname="com.entendior.screener.AnyTest"/>
+  <testcase name="f" time="0.008" classname="com.entendior.screener.domain.BrokerEnumTest"/>
+  <testcase name="printDate" time="0.112" classname="com.entendior.screener.util.DateUtilTest"/>
+  <testcase name="test" time="0.247" classname="screener.OrientDBIntegration.CSVTest"/>
+  <testcase name="testFilePath" time="0.001" classname="screener.OrientDBIntegration.CSVTest"/>
+  <testcase name="test" time="2.055" classname="screener.OrientDBIntegration.DataLocatorTest"/>
+</testsuite>

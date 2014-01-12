@@ -1,0 +1,32 @@
+<testng-results>
+  <reporter-output>
+  </reporter-output>
+  <suite name="Command line suite" duration-ms="2453" started-at="2013-11-08T02:27:19Z" finished-at="2013-11-08T02:27:21Z">
+    <groups>
+    </groups>
+    <test name="Command line test" duration-ms="2453" started-at="2013-11-08T02:27:19Z" finished-at="2013-11-08T02:27:21Z">
+      <class name="com.entendior.screener.util.DateUtilTest">
+        <test-method status="PASS" signature="printDate()" name="printDate" duration-ms="112" started-at="2013-11-08T02:27:19Z" finished-at="2013-11-08T02:27:19Z">
+        </test-method>
+      </class>
+      <class name="com.entendior.screener.AnyTest">
+        <test-method status="PASS" signature="testStringFormat()" name="testStringFormat" duration-ms="14" started-at="2013-11-08T02:27:19Z" finished-at="2013-11-08T02:27:19Z">
+        </test-method>
+      </class>
+      <class name="com.entendior.screener.domain.BrokerEnumTest">
+        <test-method status="PASS" signature="f()" name="f" duration-ms="8" started-at="2013-11-08T02:27:19Z" finished-at="2013-11-08T02:27:19Z">
+        </test-method>
+      </class>
+      <class name="screener.OrientDBIntegration.DataLocatorTest">
+        <test-method status="PASS" signature="test()" name="test" duration-ms="2055" started-at="2013-11-08T02:27:19Z" finished-at="2013-11-08T02:27:21Z">
+        </test-method>
+      </class>
+      <class name="screener.OrientDBIntegration.CSVTest">
+        <test-method status="PASS" signature="test()" name="test" duration-ms="247" started-at="2013-11-08T02:27:19Z" finished-at="2013-11-08T02:27:19Z">
+        </test-method>
+        <test-method status="PASS" signature="testFilePath()" name="testFilePath" duration-ms="1" started-at="2013-11-08T02:27:19Z" finished-at="2013-11-08T02:27:19Z">
+        </test-method>
+      </class>
+    </test>
+  </suite>
+</testng-results>
