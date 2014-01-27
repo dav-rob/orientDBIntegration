@@ -17,7 +17,11 @@ public class Util {
 	        int default_AtoZ_1to9 = f1.getName().compareTo(f2.getName());
 			return default_AtoZ_1to9;
 	    } };
-		    
+	
+	/**
+	 * Sorts date named files (e.g 20130717) from newest to oldest.
+	 * 
+	 */
     public static final Comparator<File> CP_FILES_BY_NAME_REVERSE = new Comparator<File>(){
 	    public int compare(File f1, File f2)
 	    {

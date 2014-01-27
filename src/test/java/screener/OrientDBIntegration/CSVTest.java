@@ -16,6 +16,11 @@ import com.entendior.screener.util.Util;
 
 import au.com.bytecode.opencsv.CSVReader;
 
+/**
+ * Tests reading CSV files using different file paths.
+ * 
+ * @author davidroberts
+ */
 public class CSVTest {
 	//LSE0102
 	String path = "";
@@ -26,10 +31,18 @@ public class CSVTest {
 	}
 	
 	@Test 
+	/**
+	 * Tries two ways of reading a directory path.  Choses the one that works, then reads the symbol
+	 *   details from the files contained in that directory.
+	 *   
+	 * @throws Exception
+	 */
 	public void testCsvDirectoryPath() throws Exception{
+		// try the first type of path, relative to the test src directory
 		File csvClasspathDir = new File("/LSE");
 		System.out.println("Dir /LSE exits = " + csvClasspathDir.exists());
 		Assert.assertFalse(csvClasspathDir.exists());
+		// test the directory relative to the project directory
 		File csvProjectRelativeDir = new File("./src/test/resources/LSE/");
 		System.out.println("Dir ./src/test/resources/LSE/ exits = " + csvProjectRelativeDir.exists());
 		Assert.assertTrue(csvProjectRelativeDir.exists());
@@ -38,12 +51,20 @@ public class CSVTest {
 		Arrays.sort(files, Util.CP_FILES_BY_NAME_REVERSE);
 		listFileNames(files);
 		
-		if(true)return;
+		//if(true)return;
 		
 		loadSymbolsFromCSV(files);
 	}
-
-	private void loadSymbolsFromCSV(File[] files) throws FileNotFoundException,
+	
+	/**
+	 * Read Date, Open, High, Low, Close and Volume from a CSV file downloaded for a particular exchange on 
+	 * 	  a particular date.
+	 * 
+	 * @param files
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
+	private void loadSymbolsFromCSV(File... files) throws FileNotFoundException,
 			IOException {
 		FileReader fileReader = new FileReader(files[1]);
 		CSVReader csvReader = new CSVReader(fileReader);

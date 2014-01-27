@@ -29,6 +29,13 @@ import com.entendior.screener.util.Util;
 import com.orientechnologies.orient.core.sql.query.OSQLSynchQuery;
 import com.orientechnologies.orient.object.db.OObjectDatabaseTx;
 
+/**
+ * Creates Exchange and other child objects in the object database,
+ *   then loads the Exchange object with data obtained from the CSV files.
+ *   
+ * @author davidroberts
+ *
+ */
 public class CreateDBAddCSVData {
 	
 	private OObjectDatabaseTx  db;
@@ -39,8 +46,10 @@ public class CreateDBAddCSVData {
 	private String exchangeCode;
 	  
 	@BeforeClass
-	public void setup() {	  
+	public void setup() {	
+		  // create/open the database.
 		  setupDBRegisterEntities();
+		  //open the CSV file directory and sort files.
 		  openCSVAndSort();
 	  }
 	
@@ -51,17 +60,18 @@ public class CreateDBAddCSVData {
 	}
 	
 	@Test
-	public void test1() throws Exception{
+	public void createDBExchangeAddSymbolDataFromCSV() throws Exception{
 		
-		Exchange exchange = createOrLoadExchange(this.exchangeCode);
+		//Load the exchange object from the object database.
+		Exchange exchange = createOrLoadDBExchange(this.exchangeCode);
 		
 		for (File file: this.filesInDateOrder){
-			loadDailySymbolsFromCSV(file, exchange);
-			return;
+			addOHLCtoDBfromCSV(file, exchange);
+			
 		}		
 	}
 
-	private Exchange createOrLoadExchange(String exchangeCode) {
+	private Exchange createOrLoadDBExchange(String exchangeCode) {
 		
 		List<Exchange> exchanges = db.query(
 			    new OSQLSynchQuery<Exchange>("select * from Exchange where code = ? "), exchangeCode);
@@ -82,25 +92,42 @@ public class CreateDBAddCSVData {
 		return exchange;
 	}
 	
-	private void loadDailySymbolsFromCSV(File file, Exchange exchange) throws FileNotFoundException,
+	
+	/**
+	 * From one CSV file, for an exchange:
+	 * 
+	 * 
+	 * 
+	 * @param file
+	 * @param exchange
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
+	private void addOHLCtoDBfromCSV(File file, Exchange exchange) throws FileNotFoundException,
 	IOException {
 		FileReader fileReader = new FileReader(file);
 		CSVReader csvReader = new CSVReader(fileReader);
-		String[] nextLine;
-		while ((nextLine = csvReader.readNext()) != null) {
-			String eoddataSymbol = nextLine[0];
-
-			
-			Symbol symbol = getCreateOrLoadSymbol(eoddataSymbol, exchange);
-			List<OHLC> list = symbol.getPeriodMap().get(PeriodEnum.ONE_DAY.toString());
-			/*OHLC first = fixedSizePeriodList.getFirst();
-			OHLC last = fixedSizePeriodList.getLast();*/
-			OHLC newOHLC = createNewOHLC(nextLine, eoddataSymbol);	
+		String[] oneDaysSymbolOHLC_CSVLine = csvReader.readNext();
+		//while (oneDaysSymbolOHLC_CSVLine != null) {
+			// the symbol is the first column of the CSV line.
+			String eoddataSymbol = oneDaysSymbolOHLC_CSVLine[0];
+			Symbol symbol = getCreateOrLoadDBSymbol(eoddataSymbol, exchange);
+			//load the list of OHLC for the period being queried.
+			Map<String, List<OHLC>> periodMap = symbol.getPeriodMap();
+			List<OHLC> list = periodMap.get(PeriodEnum.ONE_DAY.toString());
+			System.out.println("The size of the list is:  " + list.size());
+			if (list.size() > 20){
+				System.out.println("-- List too big, exiting.");
+				return;
+			}
+			OHLC newOHLC = createNewOHLC(oneDaysSymbolOHLC_CSVLine, eoddataSymbol);	
 			newOHLC = db.save(newOHLC);
 			logSavedObject(newOHLC, " new tick ");
 			list.add(newOHLC);
+			db.save(list);
+			db.save(periodMap);
 			db.save(symbol);
-		}	
+		//}	
 		
 		csvReader.close();
 	}
@@ -113,7 +140,14 @@ public class CreateDBAddCSVData {
 		System.out.println(""+ objectTypeDesc + " saved with db id = " + db.getIdentity(object));
 	}
 
-	private Symbol getCreateOrLoadSymbol(String eoddataSymbol, Exchange exchange) {
+	/**
+	 * Loads ore creates a database Symbol Object for an Exchange.
+	 * 
+	 * @param eoddataSymbol
+	 * @param exchange
+	 * @return
+	 */
+	private Symbol getCreateOrLoadDBSymbol(String eoddataSymbol, Exchange exchange) {
 		Map<String, Symbol> symbolsMap = exchange.getSymbols();
 		Symbol symbol = symbolsMap.get(eoddataSymbol);
 		if (symbol != null){
@@ -129,6 +163,13 @@ public class CreateDBAddCSVData {
 		return symbol;
 	}
 
+	/**
+	 * Creates a new OHLC database object.
+	 * 
+	 * @param nextLine
+	 * @param eoddataSymbol
+	 * @return
+	 */
 	private OHLC createNewOHLC(String[] nextLine, String eoddataSymbol) {
 		String eoddataDateStr = nextLine[1];
 		String eoddataOpen = nextLine[2];
@@ -170,6 +211,10 @@ public class CreateDBAddCSVData {
 	  System.out.println("File Date String[" + fileDateStr + "]");
 	}
 
+	/**
+	 * Create or open the "screener" database.
+	 * Optionally, delete the current database and recreate it.
+	 */
 	private void setupDBRegisterEntities() {
 		db = new OObjectDatabaseTx(P_LOCAL_URL_BASE + "screener");
 		  System.out.println("Database name = " + db.getName() );
@@ -184,7 +229,7 @@ public class CreateDBAddCSVData {
 		  
 		  System.out.println("Database clusters = " +db.getClusters());
 		  for (String clusterName: db.getClusterNames()){
-			  System.out.println(clusterName);
+			  System.out.println("cluster name = " + clusterName);
 		  }
 		  db.getEntityManager().registerEntityClasses("com.entendior.screener.domain");
 	}

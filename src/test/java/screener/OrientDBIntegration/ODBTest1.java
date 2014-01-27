@@ -14,6 +14,12 @@ public class ODBTest1 {
 		  "remote:localhost/";
 
   @Test
+  /**
+   * For this test to pass, run a server using:
+   * 	 ./server.sh
+   * at: 
+   * 	  /Users/davidroberts/projects/orientdbSrc/releases/orientdb-community-1.6/bin
+   */
   public void testRemote() { 
 	  db = new OObjectDatabaseTx (REMOTE_URL_BASE + "demo").open("admin", "admin");
 	  System.out.println("Database name = " + db.getName() );
@@ -25,7 +31,10 @@ public class ODBTest1 {
 	  
   }
 
-  @Test//(dependsOnMethods = "testRemote")
+  @Test
+  /**
+   * This test a connection to a local database, the server does not have to be running.
+   */
   public void testLocal() {	  
 	  db = new OObjectDatabaseTx(P_LOCAL_URL_BASE + "demo").open("admin", "admin");  
 	  System.out.println("Database name = " + db.getName() );
