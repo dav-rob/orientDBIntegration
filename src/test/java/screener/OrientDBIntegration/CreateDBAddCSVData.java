@@ -51,6 +51,7 @@ public class CreateDBAddCSVData {
 		  setupDBRegisterEntities();
 		  //open the CSV file directory and sort files.
 		  openCSVAndSort();
+		  db.begin();
 	  }
 	
 	@AfterClass
@@ -114,18 +115,14 @@ public class CreateDBAddCSVData {
 			Symbol symbol = getCreateOrLoadDBSymbol(eoddataSymbol, exchange);
 			//load the list of OHLC for the period being queried.
 			Map<String, List<OHLC>> periodMap = symbol.getPeriodMap();
-			List<OHLC> list = periodMap.get(PeriodEnum.ONE_DAY.toString());
-			System.out.println("The size of the list is:  " + list.size());
-			if (list.size() > 20){
+			List<OHLC> ohlcList = periodMap.get(PeriodEnum.ONE_DAY.toString());
+			System.out.println("The size of the list is:  " + ohlcList.size());
+			if (ohlcList.size() > 200){
 				System.out.println("-- List too big, exiting.");
 				return;
 			}
 			OHLC newOHLC = createNewOHLC(oneDaysSymbolOHLC_CSVLine, eoddataSymbol);	
-			newOHLC = db.save(newOHLC);
-			logSavedObject(newOHLC, " new tick ");
-			list.add(newOHLC);
-			db.save(list);
-			db.save(periodMap);
+			ohlcList.add(newOHLC);
 			db.save(symbol);
 		//}	
 		
@@ -155,10 +152,9 @@ public class CreateDBAddCSVData {
 		} else {
 		   symbol = new Symbol();
 		   symbol.setCode(eoddataSymbol);		
-		   symbol = db.save(symbol);
-		   System.out.println("New symbol created with db id[" + db.getIdentity(symbol) + "]");
 		   symbolsMap.put(eoddataSymbol, symbol);
-		   db.save(symbolsMap);
+		   db.save(exchange);
+		   System.out.println("New symbol created[" + symbol.getCode()+ "]");
 		}
 		return symbol;
 	}
@@ -223,8 +219,8 @@ public class CreateDBAddCSVData {
 			  db.create();
 		  } else {
 			  db.open("admin", "admin");
-			  //db.drop();
-			  //db.create();
+			  /*db.drop();
+			  db.create();*/
 		  }
 		  
 		  System.out.println("Database clusters = " +db.getClusters());

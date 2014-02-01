@@ -6,7 +6,7 @@ import java.util.Map;
 
 import com.eoddata.ws.Data.EXCHANGE;
 
-public class Exchange {
+public class Exchange extends IdObject {
 	
     private String code;  // attribute
 

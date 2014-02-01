@@ -11,7 +11,7 @@ import javax.persistence.Cacheable;
 
 import com.eoddata.ws.Data.SYMBOL;
 
-public class Symbol {
+public class Symbol extends IdObject{
 	
 	private String code;  // attribute
     private String name;  // attribute

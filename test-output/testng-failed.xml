@@ -3,11 +3,13 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="screener.OrientDBIntegration.DomainObjectsTest">
+      <class name="screener.OrientDBIntegration.CreateDBAddCSVData">
         <methods>
-          <include name="testSavingFullObjectStack"/>
+          <include name="cleanUp"/>
+          <include name="createDBExchangeAddSymbolDataFromCSV"/>
+          <include name="setup"/>
         </methods>
-      </class> <!-- screener.OrientDBIntegration.DomainObjectsTest -->
+      </class> <!-- screener.OrientDBIntegration.CreateDBAddCSVData -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

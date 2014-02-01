@@ -7,7 +7,7 @@ import com.eoddata.ws.Data.QUOTE;
 import com.orientechnologies.orient.core.exception.OSerializationException;
 import com.orientechnologies.orient.core.serialization.OSerializableStream;
 
-public class OHLC implements OSerializableStream{
+public class OHLC extends IdObject implements OSerializableStream{
 	
 	private double open;
 	private double high;

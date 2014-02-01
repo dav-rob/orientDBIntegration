@@ -101,7 +101,7 @@
                     <div class="method-list-content passed suite-Default_suite">
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="screener.OrientDBIntegration.DomainObjectsTest" hash-for-method="testSavingFullObjectStack">testSavingFullObjectStack</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="screener.OrientDBIntegration.CreateDBAddCSVData" hash-for-method="createDBExchangeAddSymbolDataFromCSV">createDBExchangeAddSymbolDataFromCSV</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Default_suite -->
@@ -119,14 +119,14 @@
           <div class="suite-Default_suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
-              <span class="class-name">screener.OrientDBIntegration.DomainObjectsTest</span>
+              <span class="class-name">screener.OrientDBIntegration.CreateDBAddCSVData</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="testSavingFullObjectStack">
-                  </a> <!-- testSavingFullObjectStack -->
-                  <span class="method-name">testSavingFullObjectStack</span>
+                  <a name="createDBExchangeAddSymbolDataFromCSV">
+                  </a> <!-- createDBExchangeAddSymbolDataFromCSV -->
+                  <span class="method-name">createDBExchangeAddSymbolDataFromCSV</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -134,7 +134,7 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">/private/var/folders/fr/cny3tld52qq0s9pxbhfhb94w0000gn/T/testng-eclipse--980610842/testng-customsuite.xml</span>
+            <span class="header-content">/private/var/folders/fr/cny3tld52qq0s9pxbhfhb94w0000gn/T/testng-eclipse-1259248257/testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -143,7 +143,11 @@
 &lt;suite name=&quot;Default suite&quot;&gt;
   &lt;test verbose=&quot;2&quot; name=&quot;Default test&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;screener.OrientDBIntegration.DomainObjectsTest&quot;/&gt;
+      &lt;class name=&quot;screener.OrientDBIntegration.CreateDBAddCSVData&quot;&gt;
+        &lt;methods&gt;
+          &lt;include name=&quot;createDBExchangeAddSymbolDataFromCSV&quot;/&gt;
+        &lt;/methods&gt;
+      &lt;/class&gt; &lt;!-- screener.OrientDBIntegration.CreateDBAddCSVData --&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Default test --&gt;
 &lt;/suite&gt; &lt;!-- Default suite --&gt;
@@ -185,14 +189,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'testSavingFullObjectStack')
-data.setCell(0, 2, 'screener.OrientDBIntegration.DomainObjectsTest')
-data.setCell(0, 3, 29017);
+data.setCell(0, 1, 'createDBExchangeAddSymbolDataFromCSV')
+data.setCell(0, 2, 'screener.OrientDBIntegration.CreateDBAddCSVData')
+data.setCell(0, 3, 1118);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 29 seconds</span>
+              <span class="suite-total-time">Total running time: 1 seconds</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -218,11 +222,19 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">screener.OrientDBIntegration.DomainObjectsTest</div> <!-- chronological-class-name -->
-              <div class="test-method">
-                <span class="method-name">testSavingFullObjectStack</span>
+              <div class="chronological-class-name">screener.OrientDBIntegration.CreateDBAddCSVData</div> <!-- chronological-class-name -->
+              <div class="configuration-class before">
+                <span class="method-name">setup</span>
                 <span class="method-start">0 ms</span>
+              </div> <!-- configuration-class before -->
+              <div class="test-method">
+                <span class="method-name">createDBExchangeAddSymbolDataFromCSV</span>
+                <span class="method-start">1441 ms</span>
               </div> <!-- test-method -->
+              <div class="configuration-class after">
+                <span class="method-name">cleanUp</span>
+                <span class="method-start">2560 ms</span>
+              </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->

@@ -1,6 +1,6 @@
 package com.entendior.screener.domain;
 
-public class BrokerPrice {
+public class BrokerPrice extends IdObject{
 	
 	private Double bid;
 	private Double ask;

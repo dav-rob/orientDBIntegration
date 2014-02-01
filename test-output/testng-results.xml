@@ -2,16 +2,24 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="29035" started-at="2014-01-26T23:47:39Z" finished-at="2014-01-26T23:48:08Z">
+  <suite name="Default suite" duration-ms="2653" started-at="2014-02-01T12:20:22Z" finished-at="2014-02-01T12:20:25Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="29035" started-at="2014-01-26T23:47:39Z" finished-at="2014-01-26T23:48:08Z">
-      <class name="screener.OrientDBIntegration.DomainObjectsTest">
-        <test-method status="PASS" signature="testSavingFullObjectStack()[pri:0, instance:screener.OrientDBIntegration.DomainObjectsTest@7662953a]" name="testSavingFullObjectStack" duration-ms="29017" started-at="2014-01-26T23:47:39Z" finished-at="2014-01-26T23:48:08Z">
+    <test name="Default test" duration-ms="2653" started-at="2014-02-01T12:20:22Z" finished-at="2014-02-01T12:20:25Z">
+      <class name="screener.OrientDBIntegration.CreateDBAddCSVData">
+        <test-method status="PASS" signature="setup()[pri:0, instance:screener.OrientDBIntegration.CreateDBAddCSVData@61ec56c9]" name="setup" is-config="true" duration-ms="1439" started-at="2014-02-01T12:20:22Z" finished-at="2014-02-01T12:20:24Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testSavingFullObjectStack -->
-      </class> <!-- screener.OrientDBIntegration.DomainObjectsTest -->
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="createDBExchangeAddSymbolDataFromCSV()[pri:0, instance:screener.OrientDBIntegration.CreateDBAddCSVData@61ec56c9]" name="createDBExchangeAddSymbolDataFromCSV" duration-ms="1118" started-at="2014-02-01T12:20:24Z" finished-at="2014-02-01T12:20:25Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createDBExchangeAddSymbolDataFromCSV -->
+        <test-method status="PASS" signature="cleanUp()[pri:0, instance:screener.OrientDBIntegration.CreateDBAddCSVData@61ec56c9]" name="cleanUp" is-config="true" duration-ms="79" started-at="2014-02-01T12:20:25Z" finished-at="2014-02-01T12:20:25Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- cleanUp -->
+      </class> <!-- screener.OrientDBIntegration.CreateDBAddCSVData -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

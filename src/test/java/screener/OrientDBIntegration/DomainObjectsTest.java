@@ -89,8 +89,7 @@ public class DomainObjectsTest {
 			Assert.assertNotNull(loadedTicker);
 			Assert.assertEquals(loadedTicker.getClose(), 1.2);
 		} finally {
-			database.delete(loadedExchange);
-		    
+			database.delete(loadedExchange);		    
 		}
 	    
 		loadedExchange = database.load(rid);
