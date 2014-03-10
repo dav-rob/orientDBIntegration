@@ -38,12 +38,14 @@ import com.orientechnologies.orient.object.db.OObjectDatabaseTx;
  * @author davidroberts
  *
  */
-public class CreateDBAddCSVData {
+public class CreateDBAddCSVDataTest {
 	
 	Log LOG = LogFactory.getLog(CreateDBAddCSVDataTest.class);
 	private OObjectDatabaseTx  db;
 	private final static String P_LOCAL_URL_BASE = 
-			  "plocal:/Users/davidroberts/projects/orientdbSrc/releases/orientdb-community-1.6/databases/";
+			  "plocal:" 
+			  +"/Users/davidroberts/projects/orientdbSrc/releases/orientdb-community-1.7-rc1/databases/";
+			  //+ "/Users/davidroberts/projects/orientdbSrc/releases/orientdb-community-1.6/databases/";
 	private File lseDirectory;
 	private File[] filesInDateOrder;
 	private String exchangeCode;
@@ -224,25 +226,30 @@ public class CreateDBAddCSVData {
 	IOException {
 		FileReader fileReader = new FileReader(file);
 		CSVReader csvReader = new CSVReader(fileReader);
-		String[] oneDaysSymbolOHLC_CSVLine = csvReader.readNext();
-		//while (oneDaysSymbolOHLC_CSVLine != null) {
-			// the symbol is the first column of the CSV line.
-			String eoddataSymbol = oneDaysSymbolOHLC_CSVLine[0];
-			Symbol symbol = getCreateOrLoadDBSymbol(eoddataSymbol, exchange);
-			//load the list of OHLC for the period being queried.
-			Map<String, List<OHLC>> periodMap = symbol.getPeriodMap();
-			List<OHLC> ohlcList = periodMap.get(PeriodEnum.ONE_DAY.toString());
-			System.out.println("The size of the list is:  " + ohlcList.size());
-			if (ohlcList.size() > 200){
-				System.out.println("-- List too big, exiting.");
-				return;
-			}
-			OHLC newOHLC = createNewOHLC(oneDaysSymbolOHLC_CSVLine, eoddataSymbol);	
-			ohlcList.add(newOHLC);
-			db.save(symbol);
-		//}	
-		
-		csvReader.close();
+		try {
+			String[] oneDaysSymbolOHLC_CSVLine = csvReader.readNext();
+			//while (oneDaysSymbolOHLC_CSVLine != null) {
+				// the symbol is the first column of the CSV line.
+				String eoddataSymbol = oneDaysSymbolOHLC_CSVLine[0];
+				Symbol symbol = getCreateOrLoadDBSymbol(eoddataSymbol, exchange);
+				//load the list of OHLC for the period being queried.
+				Map<String, List<OHLC>> periodMap = symbol.getPeriodMap();
+				List<OHLC> ohlcList = periodMap.get(PeriodEnum.ONE_DAY.toString());
+				System.out.println("The size of the list is:  " + ohlcList.size());
+				/*if (ohlcList.size() > 200){
+					System.out.println("-- List too big, exiting.");
+					return;
+				}*/
+				OHLC newOHLC = createNewOHLC(oneDaysSymbolOHLC_CSVLine, eoddataSymbol);	
+				ohlcList.add(newOHLC);
+				symbol.getDateMap().put("" + newOHLC.getDate().getTime(), newOHLC);
+				db.save(symbol);
+				oneDaysSymbolOHLC_CSVLine = csvReader.readNext();
+			//}
+		} finally {
+			csvReader.close();
+		}	
+
 	}
 
 

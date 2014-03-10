@@ -40,20 +40,36 @@
   </build>
   
   <dependencies>
+		<dependency>
+		  <groupId>net.objectlab.kit</groupId>
+		  <artifactId>datecalc-common</artifactId>
+		  <version>1.2.0</version>
+		</dependency>
+		<dependency>
+		  <groupId>net.objectlab.kit</groupId>
+		  <artifactId>datecalc-joda</artifactId>
+		  <version>1.2.0</version>
+		</dependency>
+  
+		<dependency>
+	        <groupId>de.jollyday</groupId>
+	        <artifactId>jollyday</artifactId>
+	        <version>0.4.7</version>
+		</dependency>
     	<dependency>
             <groupId>com.orientechnologies</groupId>
             <artifactId>orientdb-client</artifactId>
-            <version>1.6</version>   
+            <version>1.7-rc1</version>   
         </dependency>
 		<dependency>
             <groupId>com.orientechnologies</groupId>
             <artifactId>orientdb-enterprise</artifactId>
-            <version>1.6</version>   
+            <version>1.7-rc1</version>   
         </dependency>
         <dependency>
             <groupId>com.orientechnologies</groupId>
             <artifactId>orientdb-object</artifactId>
-            <version>1.6</version>      
+            <version>1.7-rc1</version>      
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
@@ -63,17 +79,17 @@
         <dependency>
             <groupId>com.orientechnologies</groupId>
             <artifactId>orientdb-core</artifactId>
-            <version>1.6</version>
+            <version>1.7-rc1</version>
         </dependency>
 		<dependency>
             <groupId>com.orientechnologies</groupId>
             <artifactId>orient-commons</artifactId>
-            <version>1.6</version>
+            <version>1.7-rc1</version>
         </dependency>
 		<dependency>
             <groupId>com.orientechnologies</groupId>
             <artifactId>orientdb-tests</artifactId>
-            <version>1.6</version>
+            <version>1.7-rc1</version>
             <type>test-jar</type>
             <scope>test</scope>
         </dependency>

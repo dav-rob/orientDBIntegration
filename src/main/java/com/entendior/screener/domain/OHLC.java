@@ -7,7 +7,7 @@ import com.eoddata.ws.Data.QUOTE;
 import com.orientechnologies.orient.core.exception.OSerializationException;
 import com.orientechnologies.orient.core.serialization.OSerializableStream;
 
-public class OHLC extends IdObject implements OSerializableStream{
+public class OHLC extends IdObject implements OSerializableStream {
 	
 	private double open;
 	private double high;
@@ -119,10 +119,26 @@ public class OHLC extends IdObject implements OSerializableStream{
 		return null;
 	}
 
-	public OSerializableStream fromStream(byte[] iStream)
-			throws OSerializationException {
+	public OSerializableStream fromStream(byte[] iStream) throws OSerializationException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public boolean equalsApartFromDate(OHLC fileOHLC) {
+		if (this.close != fileOHLC.close){
+			return false;
+		}
+		if (this.low != fileOHLC.low){
+			return false;
+		}
+		if (this.high != fileOHLC.high){
+			return false;
+		}
+		if (this.open != fileOHLC.open){
+			return false;
+		}
+		
+		return true;
 	}
 
 }

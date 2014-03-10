@@ -18,9 +18,12 @@ public class Symbol extends IdObject{
     private String longName;  // attribute
     private Date dateTime;  // attribute
 	
-    
-	private Map<String, BrokerPrice> brokerPrices = new HashMap<String, BrokerPrice>();
+    /**
+     * !!!!!  NB - maps need to be declared like this, then initialised in the getter !!!!!
+     */
+	private Map<String, BrokerPrice> brokerPrices = null;//new HashMap<String, BrokerPrice>();
 	private Map<String, List<OHLC>> periodMap = null;
+	private Map<String, OHLC> dateMap = null; //new HashMap<String, OHLC>(500);
 	
 	public Symbol() { }
 	
@@ -47,6 +50,18 @@ public class Symbol extends IdObject{
 	public void setPeriodMap(Map<String, List<OHLC>> periodMap) {
 		this.periodMap = periodMap;
 	}
+	
+	
+	public Map<String, OHLC> getDateMap() {
+		if (this.dateMap == null){
+			this.dateMap = new HashMap<String, OHLC>();
+		}
+		return dateMap;
+	}
+	public void setDateMap(Map<String, OHLC> dateMap) {
+		this.dateMap = dateMap;
+	}
+
 	public String getCode() {
 		return code;
 	}

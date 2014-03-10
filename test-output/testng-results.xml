@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="2653" started-at="2014-02-01T12:20:22Z" finished-at="2014-02-01T12:20:25Z">
+  <suite name="Default suite" duration-ms="5821" started-at="2014-03-10T00:23:32Z" finished-at="2014-03-10T00:23:38Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="2653" started-at="2014-02-01T12:20:22Z" finished-at="2014-02-01T12:20:25Z">
-      <class name="screener.OrientDBIntegration.CreateDBAddCSVData">
-        <test-method status="PASS" signature="setup()[pri:0, instance:screener.OrientDBIntegration.CreateDBAddCSVData@61ec56c9]" name="setup" is-config="true" duration-ms="1439" started-at="2014-02-01T12:20:22Z" finished-at="2014-02-01T12:20:24Z">
+    <test name="Default test" duration-ms="5821" started-at="2014-03-10T00:23:32Z" finished-at="2014-03-10T00:23:38Z">
+      <class name="screener.OrientDBIntegration.CreateDBAddCSVDataTest">
+        <test-method status="PASS" signature="setup()[pri:0, instance:screener.OrientDBIntegration.CreateDBAddCSVDataTest@4af1b50]" name="setup" is-config="true" duration-ms="3433" started-at="2014-03-10T00:23:32Z" finished-at="2014-03-10T00:23:36Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="createDBExchangeAddSymbolDataFromCSV()[pri:0, instance:screener.OrientDBIntegration.CreateDBAddCSVData@61ec56c9]" name="createDBExchangeAddSymbolDataFromCSV" duration-ms="1118" started-at="2014-02-01T12:20:24Z" finished-at="2014-02-01T12:20:25Z">
+        <test-method status="PASS" signature="createDBExchangeAddSymbolDataFromCSV()[pri:0, instance:screener.OrientDBIntegration.CreateDBAddCSVDataTest@4af1b50]" name="createDBExchangeAddSymbolDataFromCSV" duration-ms="1894" started-at="2014-03-10T00:23:36Z" finished-at="2014-03-10T00:23:38Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- createDBExchangeAddSymbolDataFromCSV -->
-        <test-method status="PASS" signature="cleanUp()[pri:0, instance:screener.OrientDBIntegration.CreateDBAddCSVData@61ec56c9]" name="cleanUp" is-config="true" duration-ms="79" started-at="2014-02-01T12:20:25Z" finished-at="2014-02-01T12:20:25Z">
+        <test-method status="PASS" signature="cleanUp()[pri:0, instance:screener.OrientDBIntegration.CreateDBAddCSVDataTest@4af1b50]" name="cleanUp" is-config="true" duration-ms="481" started-at="2014-03-10T00:23:38Z" finished-at="2014-03-10T00:23:38Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- cleanUp -->
-      </class> <!-- screener.OrientDBIntegration.CreateDBAddCSVData -->
+      </class> <!-- screener.OrientDBIntegration.CreateDBAddCSVDataTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
